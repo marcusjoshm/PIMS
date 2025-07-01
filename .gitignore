@@ -1,0 +1,100 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+.env
+.venv
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+.dmypy.json
+.dmypy.json.5
+
+# Pyre type checker
+.pyre/
+
+# Flask
+instance/
+.webassets-cache
+
+# Scrapy
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# macOS
+.DS_Store
+
+# System files
+Thumbs.db
+Desktop.ini
+
+# Local configuration files
+*.local
+*.env
+
+# Database files
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Other
+*.bak
+*.swp
+*.tmp 

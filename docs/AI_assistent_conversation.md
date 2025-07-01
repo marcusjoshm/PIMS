@@ -575,3 +575,36 @@ Great job resolving the merge conflicts and pushing the changes to the remote re
 - **Push to GitHub:** Successfully completed.
 
 If you have any more tasks or need further assistance, feel free to let me know!
+
+## Prompt 17
+Can we update the README with what we have done and a checklist of what needs to be completed
+
+## Response 17
+Read file: README.md
+The `README.md` file has been updated with the project details and a checklist of tasks. Here's a summary of the updates:
+
+### Overview
+- **PIMS** is designed to help organize personal inventory with specific locations for easy retrieval.
+
+### Features Implemented
+- Basic Flask application setup
+- SQLite database configuration
+- CRUD operations for inventory items, categories, and locations
+- Test script for CRUD operations using `curl`
+
+### Checklist
+- [x] Set up project structure
+- [x] Implement basic CRUD operations
+- [x] Create test script for CRUD operations
+- [ ] Add search functionality
+- [ ] Implement user authentication
+- [ ] Develop a web interface
+- [ ] Deploy the application
+
+### Getting Started
+- Instructions for running the application locally.
+
+### License
+- The project is licensed under the MIT License.
+
+If you have any more updates or need further assistance, feel free to let me know!
