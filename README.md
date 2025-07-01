@@ -33,3 +33,14 @@ To run the application locally, follow these steps:
 
 ## License
 This project is licensed under the MIT License.
+
+## New File Management Functions
+PIMS now includes file management capabilities, allowing users to upload, list, download, and delete files. This feature is useful for managing important documents and configurations.
+
+### Endpoints
+- **Upload File**: POST `/upload` - Upload a file to the server.
+- **List Files**: GET `/files` - Retrieve a list of all uploaded files.
+- **Download File**: GET `/files/<filename>` - Download a specific file.
+- **Delete File**: DELETE `/files/<filename>` - Delete a specific file from the server.
+
+These endpoints support various file types, including `txt`, `pdf`, `png`, `jpg`, `jpeg`, and `gif`. Ensure that the files you upload meet the allowed criteria.

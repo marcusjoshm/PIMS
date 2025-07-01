@@ -649,3 +649,82 @@ The changes have been successfully committed and pushed to the remote repository
   - `.gitignore`: Added a comprehensive list to exclude unnecessary files.
 
 Your repository at [marcusjoshm/PIMS](https://github.com/marcusjoshm/PIMS) is now up to date with these changes. If there's anything else you'd like to do, feel free to let me know!
+
+## Prompt 20
+I have a NAS device that I will eventually want to use for my PIMS, and in my PIMS I will want to store important documents. I would also like it to manage configs for other projects like if I eventually set up home automation, or other IoT related projects. Can we start to build  file upload and storage functions in the backend?
+
+## Response 20
+To implement file upload and storage functionality in your PIMS, we can start by adding endpoints to handle file uploads and manage stored files. Here's a plan to get started:
+
+### Steps to Implement File Upload and Storage
+
+1. **Set Up File Storage:**
+   - Decide on a directory structure for storing uploaded files.
+   - Ensure the application has the necessary permissions to read/write to this directory.
+
+2. **Implement File Upload Endpoint:**
+   - Create an endpoint to handle file uploads.
+   - Use Flask's `request.files` to handle incoming files.
+
+3. **Implement File Management:**
+   - Add endpoints to list, download, and delete stored files.
+
+4. **Security Considerations:**
+   - Validate file types and sizes to prevent malicious uploads.
+   - Consider authentication and authorization for file access.
+
+### Let's Begin
+
+We'll start by setting up a basic file upload endpoint. I'll handle the initial setup for you.
+I've added the file upload and storage functionality to your Flask application. Here's a summary of what was implemented:
+
+- **File Upload Endpoint**: Allows users to upload files to the server. Only files with specific extensions (`txt`, `pdf`, `png`, `jpg`, `jpeg`, `gif`) are allowed.
+- **List Files Endpoint**: Lists all files stored in the upload directory.
+- **Download File Endpoint**: Allows users to download a specific file.
+- **Delete File Endpoint**: Allows users to delete a specific file.
+
+### Next Steps
+
+1. **Test the Endpoints**: You can use tools like `curl` or Postman to test these endpoints.
+2. **Security Enhancements**: Consider adding authentication and authorization to secure these endpoints.
+3. **NAS Integration**: Once you're ready to integrate with your NAS, we can adjust the storage path to point to your NAS device.
+
+Let me know if you need any further assistance!
+
+## Promt 21
+What are some other uses for LIMS that I could start to incorporate into my PIMS? I'm looking for some inspiration for new ideas
+
+## Response 21
+Laboratory Information Management Systems (LIMS) are designed to manage laboratory operations, but many of their features can inspire enhancements to a Personal Information Management System (PIMS). Here are some ideas you might consider incorporating into your PIMS:
+
+1. **Sample Tracking and Management:**
+   - Implement a system to track and manage samples or items, similar to how LIMS tracks laboratory samples. This could be useful for managing collections or inventories.
+
+2. **Data Analysis and Reporting:**
+   - Add features for analyzing data related to your inventory, such as usage patterns, trends, or statistics. Generate reports to provide insights into your personal inventory.
+
+3. **Workflow Automation:**
+   - Automate routine tasks or workflows, such as restocking reminders, maintenance schedules, or alerts for expiring items.
+
+4. **Inventory Management:**
+   - Enhance inventory management with features like barcode scanning, batch tracking, and real-time inventory updates.
+
+5. **Document Management:**
+   - Store and manage important documents related to your inventory, such as receipts, warranties, or manuals, similar to how LIMS manages lab documentation.
+
+6. **Quality Control:**
+   - Implement quality control checks for your inventory, ensuring items meet certain standards or conditions.
+
+7. **User Access and Permissions:**
+   - Manage user access and permissions, allowing different levels of access for family members or roommates.
+
+8. **Integration with IoT Devices:**
+   - Integrate with IoT devices for real-time monitoring and control, such as smart home devices or sensors.
+
+9. **Task and Project Management:**
+   - Incorporate task and project management features to organize and track personal projects or goals.
+
+10. **Compliance and Audit Trails:**
+    - Implement compliance features to track changes and maintain audit trails, useful for managing sensitive or regulated items.
+
+These ideas can help expand the functionality of your PIMS, making it a more comprehensive tool for managing personal information and inventory. Let me know if you want to explore any of these ideas further!

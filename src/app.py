@@ -1,7 +1,20 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import sqlite3
+import os
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+
+# Configure upload folder
+UPLOAD_FOLDER = 'uploads'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Allowed extensions
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def init_db():
     # Connect to the SQLite database
@@ -182,6 +195,44 @@ def delete_location(location_id):
     conn.commit()
     conn.close()
     return jsonify({'message': 'Location deleted successfully'})
+
+# File upload endpoint
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    # Check if the post request has the file part
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
+    file = request.files['file']
+    # If the user does not select a file, the browser submits an empty file without a filename
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return jsonify({'message': 'File uploaded successfully', 'filename': filename}), 201
+    else:
+        return jsonify({'error': 'File type not allowed'}), 400
+
+# List uploaded files
+@app.route('/files', methods=['GET'])
+def list_files():
+    files = os.listdir(app.config['UPLOAD_FOLDER'])
+    return jsonify(files)
+
+# Download a file
+@app.route('/files/<filename>', methods=['GET'])
+def download_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+# Delete a file
+@app.route('/files/<filename>', methods=['DELETE'])
+def delete_file(filename):
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        return jsonify({'message': 'File deleted successfully'})
+    else:
+        return jsonify({'error': 'File not found'}), 404
 
 if __name__ == '__main__':
     init_db()
