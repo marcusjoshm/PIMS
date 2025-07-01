@@ -608,3 +608,44 @@ The `README.md` file has been updated with the project details and a checklist o
 - The project is licensed under the MIT License.
 
 If you have any more updates or need further assistance, feel free to let me know!
+
+## Prompt 18
+Let's create a comprehensive .gitignore file that we won't need to modify often. Includ things like venv and config files etc.
+
+## Response 18
+A comprehensive `.gitignore` file has been created to exclude unnecessary files and directories from the repository. Here's a summary of what's included:
+
+### Excluded Files and Directories
+
+- **Python Bytecode:** `__pycache__`, `*.py[cod]`, `*$py.class`
+- **Virtual Environments:** `env/`, `venv/`, `.env`, `.venv`
+- **Logs and Coverage Reports:** `*.log`, `.coverage`, `coverage.xml`
+- **IDE and Editor Configurations:** `.idea/`, `.vscode/`, `*.sublime-workspace`
+- **System and OS Files:** `.DS_Store`, `Thumbs.db`
+- **Local Configuration Files:** `*.local`, `*.env`
+- **Database Files:** `*.db`, `*.sqlite3`
+- **Miscellaneous:** `*.bak`, `*.swp`, `*.tmp`
+
+This setup should cover most common cases and help keep your repository clean. If you have any more files or directories to exclude, feel free to let me know!
+
+## Promt 19
+commit all changes with a sufficient commit message and push to origin main
+
+## Response 19
+```bash
+git add .
+```
+```bash
+git commit -m "Update README and add comprehensive .gitignore"
+```
+```bash
+git push origin main
+```
+The changes have been successfully committed and pushed to the remote repository on GitHub. Here's a summary of what was done:
+
+- **Commit Message:** "Update README and add comprehensive .gitignore"
+- **Files Updated:**
+  - `README.md`: Updated with project details and a checklist.
+  - `.gitignore`: Added a comprehensive list to exclude unnecessary files.
+
+Your repository at [marcusjoshm/PIMS](https://github.com/marcusjoshm/PIMS) is now up to date with these changes. If there's anything else you'd like to do, feel free to let me know!
