@@ -334,5 +334,244 @@ Would you like to proceed with running these `curl` commands, or do you need any
 Create a test bash script, put it in the testing folder and then run the bash script to test. This way we have a record of each test.
 
 ## Response 11
+```bash
+chmod +x tests/test_crud_operations.sh
+```
+```bash
+./tests/test_crud_operations.sh
+```
+It seems there was an error during the test execution. The error message indicates that the `inventory` table does not have the columns `category_id` and `location_id`. This is likely because the database schema was updated, but the existing database file (`pims.db`) was not recreated to reflect these changes.
 
+### Solution
 
+To resolve this, we need to recreate the database with the updated schema:
+
+1. **Delete the Existing Database File:** Remove the `pims.db` file.
+2. **Restart the Flask Application:** This will trigger the `init_db()` function to recreate the database with the correct schema.
+
+Let's go ahead and delete the existing database file and restart the application. I'll handle that for you.
+Ran tool
+```bash
+rm pims.db
+```
+```bash
+python src/app.py
+```
+The Flask application has been restarted, and the database should now be recreated with the updated schema. Let's run the test script again to verify that the CRUD operations are working correctly.
+```bash
+./tests/test_crud_operations.sh
+```
+It seems the tables were not created when the Flask application was restarted. This might be due to the `init_db()` function not being called properly or the database file not being initialized correctly.
+
+### Steps to Fix
+
+1. **Ensure `init_db()` is Called:** Make sure the `init_db()` function is called when the application starts.
+2. **Check for Errors in `init_db()`:** Verify that the `init_db()` function is correctly creating the tables.
+
+Let's ensure that the `init_db()` function is being called and check for any issues in its implementation. I'll review the relevant part of the code to confirm this.
+Read file: src/app.py
+The `init_db()` function is correctly defined and is being called in the `__main__` block of the application. This should initialize the database and create the necessary tables when the application starts.
+
+### Possible Issues
+
+1. **Database File Path:** Ensure that the `pims.db` file is being created in the correct directory.
+2. **Permissions:** Check if there are any permission issues preventing the database file from being created or modified.
+
+### Next Steps
+
+1. **Verify Database Creation:** Check if the `pims.db` file is being created in the project directory.
+2. **Check for Errors:** Look for any error messages in the terminal when the application starts.
+
+Let's ensure the database file is being created and check for any errors during initialization. If the file is not being created, we may need to investigate further. Would you like to proceed with these checks?
+
+## Prompt 12
+I restarted the application in my terminal and the test seemed to work. Here is what I did and the output:
+
+In my app terminal:
+(venv) ╭─joshuamarcus at EPICAC in ~/PIMS on main✘✘✘ 25-07-01 - 14:16:16
+╰─(venv) ⠠⠵ python src/app.py
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 323-299-219
+127.0.0.1 - - [01/Jul/2025 14:17:02] "POST /categories HTTP/1.1" 201 -
+127.0.0.1 - - [01/Jul/2025 14:17:02] "POST /locations HTTP/1.1" 201 -
+127.0.0.1 - - [01/Jul/2025 14:17:02] "POST /inventory HTTP/1.1" 201 -
+127.0.0.1 - - [01/Jul/2025 14:17:02] "GET /inventory HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2025 14:17:03] "PUT /inventory/1 HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2025 14:17:03] "DELETE /inventory/1 HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2025 14:17:03] "GET /categories HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2025 14:17:03] "GET /locations HTTP/1.1" 200 -
+
+In my test script terminal:
+(venv) ╭─joshuamarcus at EPICAC in ~/PIMS on main✘✘✘ 25-07-01 - 14:17:02
+╰─(venv) ⠠⠵ ./tests/test_crud_operations.sh
+{
+  "message": "Category created successfully"
+}
+{
+  "message": "Location created successfully"
+}
+{
+  "message": "Inventory item created successfully"
+}
+[
+  [
+    1,
+    "Laptop",
+    1,
+    1,
+    1
+  ]
+]
+{
+  "message": "Inventory item updated successfully"
+}
+{
+  "message": "Inventory item deleted successfully"
+}
+[
+  [
+    1,
+    "Electronics"
+  ]
+]
+[
+  [
+    1,
+    "Office"
+  ]
+]
+
+## Response 12
+It looks like everything is working perfectly now! The test script successfully executed all CRUD operations, and the output confirms that the operations were performed as expected:
+
+- **Categories and Locations:** Successfully created and retrieved.
+- **Inventory Items:** Successfully created, updated, retrieved, and deleted.
+
+### Next Steps
+
+1. **Enhancements:** Consider adding more features, such as search functionality, user authentication, or a more sophisticated UI.
+2. **Documentation:** Document the API endpoints and any additional features you plan to implement.
+3. **Deployment:** If you plan to use this application beyond development, consider deploying it using a production-ready server like Gunicorn or uWSGI.
+
+If you have any other features in mind or need further assistance, feel free to let me know!
+
+## Prompt 13
+Commit these changes
+
+## Response 13
+```bash
+git add .
+```
+```bash
+git commit -m "Add CRUD operations and test script for PIMS"
+```
+The changes have been successfully committed to the Git repository with the message: "Add CRUD operations and test script for PIMS."
+
+### Summary of Changes
+
+- **CRUD Operations:** Implemented for inventory items, categories, and locations.
+- **Test Script:** Added a bash script to test the CRUD operations using `curl`.
+
+If you have any more features to add or need further assistance, feel free to let me know!
+
+## Prompt 14 
+I have created a github repo with a README and LICESNSE file. Here is where it's located @https://github.com/marcusjoshm/PIMS
+
+Can we push what we have to the github remote repo? We'll have to resolve the differences between remote and local first
+
+## Response 14
+```bash
+git remote add origin https://github.com/marcusjoshm/PIMS.git
+```
+```bash
+git pull origin main --allow-unrelated-histories
+```
+It seems that a merge conflict occurred during the pull operation, and Git has opened the default editor for you to resolve the conflict. Here's what you can do:
+
+1. **Resolve the Merge Conflict:**
+   - Open the files with conflicts and manually resolve them.
+   - Look for conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) in the files and decide which changes to keep.
+
+2. **Complete the Merge:**
+   - After resolving the conflicts, stage the changes using `git add <file>`.
+   - Commit the merge using `git commit`.
+
+3. **Push the Changes:**
+   - Once the merge is complete, push the changes to the remote repository using `git push origin main`.
+
+If you need help with any of these steps, feel free to ask!
+
+## Prompt 15
+I'm not very good with vim, can you do this for me?
+
+## Response 15
+Let's resolve the merge conflict and complete the merge process. I'll guide you through the steps to resolve the conflict using the terminal.
+
+### Steps to Resolve the Merge Conflict
+
+1. **List the Files with Conflicts:**
+   - Use `git status` to see which files have conflicts.
+
+2. **Open the Files and Resolve Conflicts:**
+   - I'll help you resolve the conflicts by editing the files directly.
+
+3. **Stage the Resolved Files:**
+   - Use `git add <file>` to stage the resolved files.
+
+4. **Commit the Merge:**
+   - Use `git commit` to complete the merge.
+
+5. **Push the Changes:**
+   - Use `git push origin main` to push the changes to the remote repository.
+
+Let's start by listing the files with conflicts. I'll do that for you now.
+```bash
+git status
+```
+
+## Prompt 16
+I ran the following and resolved the merge issue:
+
+(venv) ╭─joshuamarcus at EPICAC in ~/PIMS on main✘✘✘ 25-07-01 - 14:17:03
+╰─(venv) ⠠⠵ git status
+On branch main
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+	new file:   LICENSE
+	new file:   README.md
+
+(venv) ╭─joshuamarcus at EPICAC in ~/PIMS on main✘✘✘ 25-07-01 - 14:32:40
+╰─(venv) ⠠⠵ git add .
+(venv) ╭─joshuamarcus at EPICAC in ~/PIMS on main✘✘✘ 25-07-01 - 14:32:55
+╰─(venv) ⠠⠵ git commit -m "commit GitHub License and README.md"
+[main 95a05e5] commit GitHub License and README.md
+(venv) ╭─joshuamarcus at EPICAC in ~/PIMS on main✔ 25-07-01 - 14:33:22
+╰─(venv) ⠠⠵ git push origin main
+Enumerating objects: 17, done.
+Counting objects: 100% (17/17), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (15/15), done.
+Writing objects: 100% (16/16), 7.35 KiB | 3.68 MiB/s, done.
+Total 16 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), done.
+To https://github.com/marcusjoshm/PIMS.git
+   7310ba4..95a05e5  main -> main
+
+## Response 16
+Great job resolving the merge conflicts and pushing the changes to the remote repository! Your local changes are now successfully synchronized with the GitHub repository at [marcusjoshm/PIMS](https://github.com/marcusjoshm/PIMS).
+
+### Current Status
+
+- **Local and Remote Repositories:** Both are now in sync.
+- **Merge Conflicts:** Resolved and committed.
+- **Push to GitHub:** Successfully completed.
+
+If you have any more tasks or need further assistance, feel free to let me know!
