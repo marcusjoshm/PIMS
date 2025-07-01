@@ -262,3 +262,77 @@ The CRUD operations for inventory items, categories, and locations have been imp
 2. **Enhance Functionality:** Consider adding validation, error handling, or additional features like search functionality.
 
 Let me know if you need help with testing or if there's anything else you'd like to add!
+
+## Prompt 9
+Before we move forward, let's start a git repo with an initial commit
+
+## Response 9
+```bash
+git init
+```
+```bash
+git add .
+```
+```bash
+git commit -m "Initial commit with basic Flask app and CRUD operations"
+```
+The Git repository has been successfully initialized, and the initial commit has been made with the current project setup, including the basic Flask app and CRUD operations.
+
+### Current Project Status
+
+- **Git Repository:** Initialized with an initial commit.
+- **Flask Application:** Set up with CRUD operations for inventory items, categories, and locations.
+- **Database:** SQLite database configured with tables for inventory, categories, and locations.
+
+### Next Steps
+
+- **Testing:** You can test the CRUD operations using tools like Postman or curl.
+- **Feature Enhancements:** Consider adding more features, such as search functionality or user authentication.
+
+Let me know if you need help with testing or if there's anything else you'd like to work on!
+
+## Prompt 10 
+I want to test the functionality so far. First, let's create a testing directory. All testing scripts and data will go in that folder. Next I want to test the CRUD operations using curl.
+
+## Response 10
+```bash
+mkdir tests
+```
+The `tests` directory has been created to store all testing scripts and data. Now, let's proceed with testing the CRUD operations using `curl`.
+
+### Testing CRUD Operations with `curl`
+
+Here are some example `curl` commands to test the CRUD operations for inventory items:
+
+1. **Create an Inventory Item:**
+   ```bash
+   curl -X POST http://127.0.0.1:5000/inventory -H "Content-Type: application/json" -d '{"name": "Laptop", "category_id": 1, "location_id": 1, "quantity": 1}'
+   ```
+
+2. **Read Inventory Items:**
+   ```bash
+   curl -X GET http://127.0.0.1:5000/inventory
+   ```
+
+3. **Update an Inventory Item:**
+   ```bash
+   curl -X PUT http://127.0.0.1:5000/inventory/1 -H "Content-Type: application/json" -d '{"name": "Laptop", "category_id": 1, "location_id": 1, "quantity": 2}'
+   ```
+
+4. **Delete an Inventory Item:**
+   ```bash
+   curl -X DELETE http://127.0.0.1:5000/inventory/1
+   ```
+
+### Testing Categories and Locations
+
+You can use similar `curl` commands to test the CRUD operations for categories and locations by replacing the endpoint paths and data accordingly.
+
+Would you like to proceed with running these `curl` commands, or do you need any modifications or additional tests?
+
+## Prompt 11
+Create a test bash script, put it in the testing folder and then run the bash script to test. This way we have a record of each test.
+
+## Response 11
+
+
