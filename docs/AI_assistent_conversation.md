@@ -728,3 +728,10 @@ Laboratory Information Management Systems (LIMS) are designed to manage laborato
     - Implement compliance features to track changes and maintain audit trails, useful for managing sensitive or regulated items.
 
 These ideas can help expand the functionality of your PIMS, making it a more comprehensive tool for managing personal information and inventory. Let me know if you want to explore any of these ideas further!
+
+## Prompt 22
+Include in the README the new file managment functions in the backend
+
+## Response 22
+Read file: README.md
+I've added a section to the README about the new file management functions in the backend. It includes details about the endpoints for uploading, listing, downloading, and deleting files, as well as the supported file types. Let me know if there's anything else you'd like to add or modify!
