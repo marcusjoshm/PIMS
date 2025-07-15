@@ -1,5 +1,5 @@
 # PRIMS
-A "Personal Resource and Information Management System" for organizing my life
+A "Personal Resource and Information Management System" for organizing my life.
 
 ## Overview
 PRIMS (Personal Resource and Information Management System) is designed to help organize personal inventory, such as kitchen supplies, clothes, and electronics, with specific locations for easy retrieval.
