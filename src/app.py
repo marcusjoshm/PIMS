@@ -18,7 +18,7 @@ def allowed_file(filename):
 
 def init_db():
     # Connect to the SQLite database
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     # Create a table for inventory items
     cursor.execute('''
@@ -61,7 +61,7 @@ def create_inventory_item():
     category_id = data.get('category_id')
     location_id = data.get('location_id')
     quantity = data.get('quantity', 0)
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('INSERT INTO inventory (name, category_id, location_id, quantity) VALUES (?, ?, ?, ?)',
                    (name, category_id, location_id, quantity))
@@ -72,7 +72,7 @@ def create_inventory_item():
 # Read all inventory items
 @app.route('/inventory', methods=['GET'])
 def get_inventory_items():
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM inventory')
     items = cursor.fetchall()
@@ -87,7 +87,7 @@ def update_inventory_item(item_id):
     category_id = data.get('category_id')
     location_id = data.get('location_id')
     quantity = data.get('quantity')
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('''
         UPDATE inventory
@@ -101,7 +101,7 @@ def update_inventory_item(item_id):
 # Delete an inventory item
 @app.route('/inventory/<int:item_id>', methods=['DELETE'])
 def delete_inventory_item(item_id):
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('DELETE FROM inventory WHERE id = ?', (item_id,))
     conn.commit()
@@ -113,7 +113,7 @@ def delete_inventory_item(item_id):
 def create_category():
     data = request.get_json()
     name = data.get('name')
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('INSERT INTO categories (name) VALUES (?)', (name,))
     conn.commit()
@@ -123,7 +123,7 @@ def create_category():
 # Read all categories
 @app.route('/categories', methods=['GET'])
 def get_categories():
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM categories')
     categories = cursor.fetchall()
@@ -135,7 +135,7 @@ def get_categories():
 def update_category(category_id):
     data = request.get_json()
     name = data.get('name')
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('UPDATE categories SET name = ? WHERE id = ?', (name, category_id))
     conn.commit()
@@ -145,7 +145,7 @@ def update_category(category_id):
 # Delete a category
 @app.route('/categories/<int:category_id>', methods=['DELETE'])
 def delete_category(category_id):
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('DELETE FROM categories WHERE id = ?', (category_id,))
     conn.commit()
@@ -157,7 +157,7 @@ def delete_category(category_id):
 def create_location():
     data = request.get_json()
     name = data.get('name')
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('INSERT INTO locations (name) VALUES (?)', (name,))
     conn.commit()
@@ -167,7 +167,7 @@ def create_location():
 # Read all locations
 @app.route('/locations', methods=['GET'])
 def get_locations():
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM locations')
     locations = cursor.fetchall()
@@ -179,7 +179,7 @@ def get_locations():
 def update_location(location_id):
     data = request.get_json()
     name = data.get('name')
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('UPDATE locations SET name = ? WHERE id = ?', (name, location_id))
     conn.commit()
@@ -189,7 +189,7 @@ def update_location(location_id):
 # Delete a location
 @app.route('/locations/<int:location_id>', methods=['DELETE'])
 def delete_location(location_id):
-    conn = sqlite3.connect('pims.db')
+    conn = sqlite3.connect('prims.db')
     cursor = conn.cursor()
     cursor.execute('DELETE FROM locations WHERE id = ?', (location_id,))
     conn.commit()
