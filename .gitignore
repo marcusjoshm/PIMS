@@ -97,4 +97,7 @@ Desktop.ini
 # Other
 *.bak
 *.swp
-*.tmp 
+*.tmp
+
+# Conversation history
+docs/AI_assistent_conversation.md 
