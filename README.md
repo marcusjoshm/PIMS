@@ -1,8 +1,8 @@
-# PIMS
-A "Personal Information Management System" for organizing my life
+# PRIMS
+A "Personal Resource and Information Management System" for organizing my life
 
 ## Overview
-PIMS (Personal Information Management System) is designed to help organize personal inventory, such as kitchen supplies, clothes, and electronics, with specific locations for easy retrieval.
+PRIMS (Personal Resource and Information Management System) is designed to help organize personal inventory, such as kitchen supplies, clothes, and electronics, with specific locations for easy retrieval.
 
 ## Features Implemented
 - Basic Flask application setup
@@ -24,8 +24,8 @@ PIMS (Personal Information Management System) is designed to help organize perso
 
 ## Getting Started
 To run the application locally, follow these steps:
-1. Clone the repository: `git clone https://github.com/marcusjoshm/PIMS.git`
-2. Navigate to the project directory: `cd PIMS`
+1. Clone the repository: `git clone https://github.com/marcusjoshm/PRIMS.git`
+2. Navigate to the project directory: `cd PRIMS`
 3. Create a virtual environment: `python3 -m venv venv`
 4. Activate the virtual environment: `source venv/bin/activate`
 5. Install dependencies: `pip install -r requirements.txt`
@@ -35,7 +35,7 @@ To run the application locally, follow these steps:
 This project is licensed under the MIT License.
 
 ## New File Management Functions
-PIMS now includes file management capabilities, allowing users to upload, list, download, and delete files. This feature is useful for managing important documents and configurations.
+PRIMS now includes file management capabilities, allowing users to upload, list, download, and delete files. This feature is useful for managing important documents and configurations.
 
 ### Endpoints
 - **Upload File**: POST `/upload` - Upload a file to the server.
